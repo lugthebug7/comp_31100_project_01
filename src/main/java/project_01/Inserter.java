@@ -1,31 +1,30 @@
 package project_01;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class Inserter {
 
-    private List<Integer> list;
-    private int n;
+    public static Map<Integer, Long> timingTest(List<Integer> list, int maxN) {
 
-    public Inserter(List<Integer> list, int n) {
-        this.list = list;
-        this.n = n;
-        
-    }
+        Map<Integer, Long> timingMap = new HashMap<>();
 
-    public int timingTest(){
+        for (int i = 1; i < maxN; i+=1000) {
+            Random random = new Random();
+            long startTime = System.nanoTime();
+            for (int j = 0; j < i; j++) {
+                int index = list.size() / 2;
+                list.add(index, random.nextInt());
+            }
+            long endTime = System.nanoTime();
 
-        int time;
-
-        Random random = new Random();
-
-        for (int i = 0; i < n; i++) {
-            list.add(random.nextInt(), n/2);
+            long time = endTime - startTime;
+            timingMap.put(i, time);
+            list.clear();
         }
-
-        return time;
-
+        return timingMap;
     }
-
 }
+
