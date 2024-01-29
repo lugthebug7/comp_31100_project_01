@@ -7,11 +7,11 @@ import java.util.Random;
 
 public class Inserter {
 
-    public static Map<Integer, Long> timingTest(List<Integer> list, int maxN) {
+    public static Map<Integer, Long> timingTest(List<Integer> list, int maxN, int interval) {
 
         Map<Integer, Long> timingMap = new HashMap<>();
 
-        for (int i = 1; i < maxN; i+=1000) {
+        for (int i = 1; i < maxN; i+=interval) {
             Random random = new Random();
             long startTime = System.nanoTime();
             for (int j = 0; j < i; j++) {
