@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Main {
 
@@ -16,7 +17,7 @@ public class Main {
         int maxNLink = scanner.nextInt();
         System.out.print("Enter positive interal to reach the max value: ");
         int intervalLink = scanner.nextInt();
-        Map<Integer, Long> linkMap = Inserter.timingTest(testLink, maxNLink, intervalLink);
+        Stack<TimingNode> linkStack = Inserter.timingTest(testLink, maxNLink, intervalLink);
 
 
         ArrayList<Integer> testArray = new ArrayList<>();
@@ -24,11 +25,18 @@ public class Main {
         int maxNArray = scanner.nextInt();
         System.out.print("Enter positive interal to reach the max value: ");
         int intervalArray = scanner.nextInt();
-        Map<Integer, Long> arrayMap = Inserter.timingTest(testArray, maxNArray, intervalArray);
+        Stack<TimingNode> arrayStack = Inserter.timingTest(testArray, maxNArray, intervalArray);
         scanner.close();
 
-        System.out.println("LinkedList: " + linkMap);
-        System.out.println("ArrayList: " + arrayMap);
+        System.out.println("LinkedList: ");
+        for (TimingNode linkNode : linkStack) {
+            System.out.println(linkNode);
+        }
+        
+        System.out.println("ArrayList: ");
+        for (TimingNode arrayNode : arrayStack) {
+            System.out.println(arrayNode);
+        }
 
     }
 }
